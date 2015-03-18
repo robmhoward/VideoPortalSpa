@@ -1,0 +1,19 @@
+{
+  "name": "VideoPortalSpa",
+  "version": "0.0.0",
+  "description": "SPA prototype for Video Portal UX",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/robmhoward/VideoPortalSpa.git"
+  },
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/robmhoward/VideoPortalSpa/issues"
+  },
+  "homepage": "https://github.com/robmhoward/VideoPortalSpa"
+}
