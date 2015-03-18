@@ -1,0 +1,83 @@
+body, .ms-core-defaultFont, #pageStatusBar, .ms-status-msg, .js-callout-body {
+    font-family: "Segoe UI","Segoe UI","Segoe",Tahoma,Helvetica,Arial,sans-serif;
+    font-size: 13px;
+}
+
+.vp-header-featured {
+    display: inline-block;
+    margin-bottom: 46px;
+    min-width: 100%;
+    padding: 50px 0px 20px 0px;
+}
+
+.vp-header-bottom {
+    margin-bottom: 25px;
+}
+
+.vp-channel-title {
+    text-overflow: ellipsis;
+    white-space: nowrap;
+    overflow: hidden;
+    padding-left: 10px;
+    border-width: 4px;
+    border-left-style: solid;
+}
+
+.vp-channel-subtitle {
+    margin-left: 14px;
+}
+
+.vp-tile-group {
+    position: relative;
+    float: left;
+}
+
+.vp-tile-block {
+    float: left;
+    margin: 0 18px 18px 0;
+    position: relative;
+}
+
+.vp-thumbContainer {
+    display: inline-block;
+    padding-right: 0px;
+    padding-bottom: 0px;
+    position: relative;
+    -webkit-user-select: none;
+    -moz-user-select: none;
+    -ms-user-select: none;
+    user-select: none;
+}
+
+.vp-thumbImageContainer {
+    overflow: hidden;
+    position: relative;
+    -webkit-user-select: none;
+    -moz-user-select: none;
+    -ms-user-select: none;
+    user-select: none;
+}
+
+.vp-thumbImage {
+    display: block;
+    margin: auto;
+}
+
+.vp-thumbDataOverlay {
+    position: initial;
+    background-color: #fff;
+    color: #333;
+}
+
+.vp-thumbDataContainer {
+    position: absolute;
+    bottom: 0px;
+}
+
+
+
+
+.vp-site-defaultWidth {
+    width: 1200px;
+    margin: 0 auto;
+}
