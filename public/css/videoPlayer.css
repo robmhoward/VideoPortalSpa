@@ -3,6 +3,19 @@ body, .ms-core-defaultFont, #pageStatusBar, .ms-status-msg, .js-callout-body {
     font-size: 13px;
 }
 
+.vp-header-featured .vp-largePictureLine1, .vp-header-featured .vp-largePictureLine2, .vp-header-featured .ms-Icon--ellipsis {
+    color: #fff;
+    text-shadow: 0px 0px 3px #000;
+    filter: progid:DXImageTransform.Microsoft.Shadow(color=#FF0000,strength=3);
+}
+
+.vp-tile-height .vp-largePictureLine1 {
+    color: #333;
+    font-family: "wf_segoe-ui_normal","Segoe UI","Segoe WP",Tahoma,Arial,sans-serif;
+    font-size: 14px;
+    font-weight: normal;
+}
+
 .vp-header-featured {
     display: inline-block;
     margin-bottom: 46px;
@@ -74,6 +87,7 @@ body, .ms-core-defaultFont, #pageStatusBar, .ms-status-msg, .js-callout-body {
     bottom: 0px;
 }
 
+<<<<<<< HEAD
 .vp-header-featured .vp-tile-height-x2 .vp-thumbDataOverlay, .vp-header-featured .vp-tile-height-x2 .vp-thumbDataContainer, .vp-header-featured .vp-tile-height .vp-thumbDataOverlay, .vp-header-featured .vp-tile-height .vp-thumbDataContainer {
     padding: 4px 10px 0px 10px;
 }
