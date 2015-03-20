@@ -1,17 +1,76 @@
 <html ng-app="videoPortalApp">
 
 <head>
-<title>Video Portal</title>
+	<title>Video Portal</title>
 
-<link href="css/videoPlayer.css" rel="stylesheet" type="text/css" />
-<link href="https://cdnppe.sharepointonline.com/2094/_layouts/15/16.0.3918.1200/1033/styles/videoportal.css" rel="stylesheet" type="text/css" />
+	<link href="css/videoPlayer.css" rel="stylesheet" type="text/css" />
+	
+	<link href="https://r3.res.outlook.com/o365/versionless/wexvpstyles_7019ab5.css" rel="stylesheet" type="text/css" />
+	<link href="https://cdnppe.sharepointonline.com/2094/_layouts/15/16.0.3918.1200/1033/styles/videoportal.css" rel="stylesheet" type="text/css" />
+
 </head>
 
 <body>
 
-	<div ng-view>
+<div class="videoContainer">
+	<div class="vp-VideoPortalApp">
+		<div class="vp-SetView"> 
+			<div class="vp-SetView-content">
 
+				<div class="vp-SetView-commandBar">
+					<div class="popupShadow" role="alertdialog" aria-describedby="_ariaId_2" aria-labelledby="_ariaId_1" style="display: none;" IsPopup="1" IsModal="true"></div>
+					<div class="ms-NavBar vp-NavBar"> 
+						<div class="vp-NavBar-search"> 
+							<button tabindex="0" class="vp-NavBar-searchButton o365button" type="button" autoid="_WxVP_0">
+								<i class="ms-Icon ms-Icon--search ms-font-l"></i>
+							</button> 
+						</div> 
+						<div class="vp-NavBar-leftArea"> 
+							<ul class="ms-NavBar-items vp-NavBar-items"> 
+								<li class="ms-NavBar-item vp-NavBar-item">
+									<button href="#/" tabindex="1" class="vp-NavBar-button vp-NavBar-button--home o365button" type="button" autoid="_WxVP_1">
+										<div class="vp-NavBar-buttonInner">
+											<span class="vp-NavBar-commandText ms-font-m ms-font-weight-regular" autoid="_WxVP_2">Home</span>
+										</div>
+									</button> 
+								</li> 
+								<li class="ms-NavBar-item vp-NavBar-item">
+									<button tabindex="2" class="vp-NavBar-button vp-NavBar-button--channels o365button" type="button" autoid="_WxVP_3">
+										<div class="vp-NavBar-buttonInner">
+											<span class="vp-NavBar-commandText ms-font-m ms-font-weight-regular" autoid="_WxVP_4">Channel</span>
+										</div>
+									</button> 
+								</li> 
+							</ul> 
+						</div> 
+						<div class="vp-NavBar-rightArea"> 
+							<ul class="ms-NavBar-items vp-NavBar-items">  
+								<li class="ms-NavBar-item vp-NavBar-item vp-NavBar-command"> 
+									<button tabindex="3" class="vp-NavBar-button vp-NavBar-button--share o365button" type="button" autoid="_WxVP_5">
+										<div class="vp-NavBar-buttonInner">
+											<i class="vp-NavBar-icon ms-Icon--mail"></i>
+											<span class="vp-NavBar-commandText ms-font-m ms-font-weight-regular ms-u-hiddenMdDown" autoid="_WxVP_6">Share</span>
+										</div>
+									</button> 
+								</li> 
+								<li class="ms-NavBar-item vp-NavBar-item vp-NavBar-command">
+									<button tabindex="4" class="vp-NavBar-button vp-NavBar-button--delete o365button" style="display: none;" type="button" autoid="_WxVP_7"></button> 
+								</li> 
+							</ul> 
+						</div> 
+					</div>
+				</div> 
+
+
+
+				<div class="vp-SetView-pageArea" ng-view>
+
+				</div>
+
+			</div>
+		</div>
 	</div>
+</div>
 
 	<script type="text/javascript" src="https://ajax.googleapis.com/ajax/libs/angularjs/1.3.15/angular.min.js"></script>
 	<script type="text/javascript" src="https://ajax.googleapis.com/ajax/libs/angularjs/1.3.15/angular-route.min.js"></script>
