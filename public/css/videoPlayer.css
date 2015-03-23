@@ -1,3 +1,15 @@
+@font-face
+{
+font-family:"SPO365Icons";
+src:url("fonts/Office365Icons.eot");
+src:url("fonts/Office365Icons.eot?#iefix") format("embedded-opentype"),
+url("fonts/Office365Icons.woff") format("woff"),
+url("fonts/Office365Icons.ttf") format("truetype"),
+url("fonts/Office365Icons.svg#web") format("svg");
+font-style:normal;
+font-weight:normal;
+}
+
 body, .ms-core-defaultFont, #pageStatusBar, .ms-status-msg, .js-callout-body {
     font-family: "Segoe UI","Segoe UI","Segoe",Tahoma,Helvetica,Arial,sans-serif;
     font-size: 13px;
