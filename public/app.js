@@ -14,10 +14,20 @@ var videoPortalApp = angular.module("videoPortalApp", ['ngRoute', 'AdalAngular']
 			delete $http.defaults.headers.common['X-Requested-With'];
 			return $http.get(baseUrl + 'search/popular?$top=10');
 		};
+		factory.getChannel = function (channelId) {
+			$http.defaults.useXDomain = true;
+			delete $http.defaults.headers.common['X-Requested-With'];
+			return $http.get(baseUrl + 'channels(guid\'' + channelId + '\')?$expand=Videos');
+		};
 		factory.getChannelVideos = function (channelId) {
 			$http.defaults.useXDomain = true;
 			delete $http.defaults.headers.common['X-Requested-With'];
 			return $http.get(baseUrl + 'channels(guid\'' + channelId + '\')?$expand=Videos');
+		};
+		factory.getRelatedVideos = function (channelId) {
+			$http.defaults.useXDomain = true;
+			delete $http.defaults.headers.common['X-Requested-With'];
+			return $http.get(baseUrl + 'channels(guid\'' + channelId + '\')/search/related?$top=4');
 		};
 		factory.getVideo = function (channelId, videoId) {
 			$http.defaults.useXDomain = true;
@@ -34,7 +44,6 @@ var videoPortalApp = angular.module("videoPortalApp", ['ngRoute', 'AdalAngular']
 			delete $http.defaults.headers.common['X-Requested-With'];
 			return $http.get(baseUrl + 'channels(guid\'' + channelId + '\')/videos(guid\'' + videoId + '\')/getStreamingKeyAccessToken');						
 		}
-
 		factory.getChannels = function() {
 			$http.defaults.useXDomain = true;
 			delete $http.defaults.headers.common['X-Requested-With'];
@@ -127,10 +136,18 @@ videoPortalApp.controller("VideoController", function($scope, $routeParams, $sce
 			constructEmbedUrl();
 		}
 	});
+	videosFactory.getChannel($routeParams.channelId).success(function (results) {
+		console.log("Channel returned");
+		results.VideoCount = results.Videos.length;
+		$scope.channel = results;
+	});
 	videosFactory.getVideo($routeParams.channelId, $routeParams.videoId).success(function (results) { 
 		$scope.video = results; 
 		console.log("Video returned");
 	});
-	videosFactory.getChannel
+	videosFactory.getRelatedVideos($routeParams.channelId).success(function (results) {
+		$scope.relatedVideos = results.value; 
+		console.log("Related Videos returned");
+	});
 
 });

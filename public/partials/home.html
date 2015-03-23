@@ -61,7 +61,7 @@
 		<div class="vp-tile-group inlineBlockDisplay vp-u-clearLeft vp-u-spacer vp-thumbnail-section" ng-repeat="channel in channels">
 	        <a title="{{channel.Title}}" href="#/channels/{{channel.Id}}">
 		        <div class="vp-header-bottom">
-		            <span class="ms-font-xl ms-font-weight-semilight vp-channel-title" style="border-color: rgb(51, 153, 255);">{{channel.Title}}</span>
+		            <span class="ms-font-xl ms-font-weight-semilight vp-channel-title" style="border-color: {{channel.TileHtmlColor}};">{{channel.Title}}</span>
 		            <span class="ms-heroLink ms-font-l vp-channel-subtitle">See all videos</span>
 		        </div>
 	        </a>
