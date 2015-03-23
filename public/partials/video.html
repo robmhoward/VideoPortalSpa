@@ -1,16 +1,162 @@
+
+
 <div class="container">	        
-	        <div class="vp-tile-block vp-thumbContainer vp-tile-width vp-tile-height">
-	            <div class="vp-thumbImageContainer ms-bg-color-neutralLighterAlt vp-tile-width vp-tile-height">
-	                    <img class="vp-thumbImage vp-tile-width vp-tile-height" src="{{video.ThumbnailUrl}}&amp;width=220&amp;height=124"> 
-	            </div> 
-	            <div class="vp-thumbDataOverlay vp-tile-width"></div>
-	            <div class="vp-thumbDataContainer vp-tile-width">
-	                    <div class="vp-largePictureLine1 ms-noWrap vp-smallThumb-title">{{video.Title}}</div>
-	                <div class="vp-largePictureLine2">{{video.Duration}} <span class="vp-description-separator ms-border-color-neutralTertiaryAlt"></span>{{video.ViewCount}} views 
-	                    <a title="View Video" class="vp-u-floatRight" id="ctl00_PlaceHolderMain_ctl142_callout" onclick="openVideoCallout(this);" href="#" ms-jsgrid-click-passthrough="true">
-	                        <i class="ms-Icon ms-Icon--ellipsis"></i>
-	                    </a>
-	                </div> 
-	            </div>
-	        </div>
+	<div class="vp-SetView-pageArea">
+		<div>
+			<div class="vp-PlayerPage">
+				<div class="vp-PlayerPage-theater"> 
+					<div class="vp-PlayerPage-theaterBackground ms-bg-color-neutralDark"></div> 
+					<div class="vp-PlayerPage-theaterPlayer u-contentCenter"> 
+						<div class="vp-VideoPlayer">
+							<div class="vp-VideoPlayer-player"> 
+								<div class="vp-Video-constantRatio"> 
+
+<iframe ng-src="{{videoEmbedUrl}}" name="azuremediaplayer" scrolling="no" frameborder="no" align="center" height="100%" width="100%" allowfullscreen></iframe>
+
+								</div>
+							</div>
+						</div>
+					</div>
+				</div>
+
+				<div class="vp-videoplayerDetails-container">
+					<div class="vp-u-floatRight vp-details-container vp-tile-width">
+				
+						<div id="ctl00_PlaceHolderMain_groupTileContainer" class="vp-player-spacer">
+            				<a title="Ivy" href="/#channels/e076d039-972a-4508-be36-ea53ca0e2c1e">
+            					<div class="ms-font-xl ms-font-weight-semilight vp-channel-title" style="border-color: #33CC33">Ivy</div>
+            					<div class="ms-font-m vp-channel-subtitle">11 Videos</div>
+        					</a>
+            			</div>
+					
+						<span id="ctl00_PlaceHolderMain_lblErrorMessage" class="ms-font-m ms-font-color-error"></span>
+					</div>
+			
+					<div class="vp-player-descriptionBlock vp-u-spacer">
+						<div>
+					
+							<span id="ctl00_PlaceHolderMain_videoTitle" class="ms-font-xl">{{video.Title}}</span>
+					
+					<template_control>
+						<label id="videoTitleEditLabel" class="ms-textFieldLabel" style="display: none;">Title</label>
+						<input name="ctl00$PlaceHolderMain$titleTextBox" type="text" value="WP_20150128_001" maxlength="255" size="35" id="ctl00_PlaceHolderMain_titleTextBox" class="ms-font-xl vp-player-spacer vp-player-editField" title="Title" alwaysenablesilent="true" style="display: none;">
+					</template_control>
+				</div>
+				<div id="propertyDiv" class="ms-font-m vp-u-spacer">
+					<span id="createDateTime">
+						Added on 3/20/2015
+					</span>
+					<span id="viewCountSeparator" class="vp-player-view-separator"></span>
+					<span id="videoViewCount">1 View</span>
+				</div>
+				<div>
+					
+					<span id="ctl00_PlaceHolderMain_videoDescription" class="ms-font-m"></span>
+					
+					<label id="videoDescriptionEditLabel" class="ms-textFieldLabel" style="display: none;">Description</label>
+					<template_control>
+						<textarea name="ctl00$PlaceHolderMain$descriptionTextBox" rows="3" cols="40" id="ctl00_PlaceHolderMain_descriptionTextBox" class="ms-font-m vp-player-editField vp-player-spacer ms-core-navigation" title="Description" alwaysenablesilent="true" style="display: none;"></textarea>
+					</template_control>
+				</div>
+				<div>
+					
+						<button id="editButton" class="ms-Button ms-Button--command" value="Edit" onclick="editClicked();return false;">
+							<span class="ms-Button-icon"><i id="icon" class="ms-Icon ms-Icon--edit"></i></span>
+							<span class="ms-Button-label" id="editbuttonliteral">Edit</span>
+						</button>
+						<button id="btnDelete" class="ms-Button ms-Button--command" value="Delete video" onclick="javascript:if (!deleteClicked()) return false;" style="display: none;">
+							<span class="ms-Button-icon"><i class="ms-Icon ms-Icon--delete"></i></span>
+							<span class="ms-Button-label">Delete video</span>
+						</button>
+					
+				</div>
+				
+			</div>
+			
+			<div id="relatedVideosPartContent" class="vp-u-clearLeft vp-relatedVideoPart">
+				<div class="ms-font-xl vp-u-spacer">
+					You may also like
+				</div>
+				<div class="vp-tile-group">
+            <div class="vp-tile-block vp-thumbContainer vp-tile-width vp-tile-height">
+                <div class="vp-thumbImageContainer ms-bg-color-neutralLighterAlt vp-tile-width vp-tile-height">
+                    <a href="https://junction.sharepoint.com/portals/hub/_layouts/15/videoplayer.aspx?v=https%3A%2F%2Fjunction%2Esharepoint%2Ecom%2Fportals%2FIvy%2FpVid%2FWP%5F20150307%5F006%2Emp4"> 
+                        <img alt="WP_20150307_006" class="vp-thumbImage vp-tile-width vp-tile-height" src="https://junction.sharepoint.com/portals/Ivy/pVid/WP_20150307_006.mp4.PNG?VideoPreview=1&amp;width=220&amp;height=124" onerror="(event.srcElement ? event.srcElement : event.target).src = 'https://junction.sharepoint.com/portals/hub/_layouts/15/images/VIDEOPREVIEW.PNG?width=220&amp;height=124'"> 
+                    </a>
+                </div> 
+                <div class="vp-thumbDataOverlay vp-tile-width"></div>
+                <div class="vp-thumbDataContainer vp-tile-width">
+                    <a title="WP_20150307_006" href="https://junction.sharepoint.com/portals/hub/_layouts/15/videoplayer.aspx?v=https%3A%2F%2Fjunction%2Esharepoint%2Ecom%2Fportals%2FIvy%2FpVid%2FWP%5F20150307%5F006%2Emp4" class="vp-largePictureLine1Link"> 
+                        <div class="vp-largePictureLine1 ms-noWrap vp-smallThumb-title">WP_20150307_006</div>
+                    </a>
+                    <div class="vp-largePictureLine2">0:26 <span class="vp-description-separator ms-border-color-neutralTertiaryAlt"></span>1 views 
+                        <a id="ctl00_PlaceHolderMain_videoRelatedViewControl0_callout" class="vp-u-floatRight" href="#" onclick="openVideoCallout(this);" title="View Video" itemproperties="{&quot;Comment&quot;:&quot;&quot;,&quot;Author&quot;:&quot;Rob Howard&quot;,&quot;Source&quot;: &quot;/portals/hub/_layouts/15/videoplayback.aspx?IsDlg=1&amp;VideoItemUrl=https://junction.sharepoint.com%2Fportals%2FIvy%2FpVid%2FWP%5F20150307%5F006%2Emp4&amp;width=320&amp;height=180&quot;,&quot;Created&quot;:&quot;03/20/2015 17:04:21&quot;,&quot;Title&quot;:&quot;WP_20150307_006&quot;,&quot;VideoId&quot;:&quot;1b8afa3f-d03a-4115-9424-7bb4624933a7&quot;,&quot;ChannelId&quot;:&quot;e076d039-972a-4508-be36-ea53ca0e2c1e&quot;,&quot;ProcessingStatus&quot;:2,&quot;VideoIndexingUrl&quot;:&quot;https://junction.sharepoint.com/portals/Ivy/pVid/Forms/DispForm.aspx?ID=9&quot;}" ms-jsgrid-click-passthrough="true">
+                            <i class="ms-Icon ms-Icon--ellipsis"></i>
+                        </a>
+                    </div> 
+                </div>
+            </div>
+            <div class="vp-tile-block vp-thumbContainer vp-tile-width vp-tile-height">
+                <div class="vp-thumbImageContainer ms-bg-color-neutralLighterAlt vp-tile-width vp-tile-height">
+                    <a href="https://junction.sharepoint.com/portals/hub/_layouts/15/videoplayer.aspx?v=https%3A%2F%2Fjunction%2Esharepoint%2Ecom%2Fportals%2FIvy%2FpVid%2FWP%5F20150110%5F001%2Emp4"> 
+                        <img alt="WP_20150110_001" class="vp-thumbImage vp-tile-width vp-tile-height" src="https://junction.sharepoint.com/portals/Ivy/pVid/WP_20150110_001.mp4.PNG?VideoPreview=1&amp;width=220&amp;height=124" onerror="(event.srcElement ? event.srcElement : event.target).src = 'https://junction.sharepoint.com/portals/hub/_layouts/15/images/VIDEOPREVIEW.PNG?width=220&amp;height=124'"> 
+                    </a>
+                </div> 
+                <div class="vp-thumbDataOverlay vp-tile-width"></div>
+                <div class="vp-thumbDataContainer vp-tile-width">
+                    <a title="WP_20150110_001" href="https://junction.sharepoint.com/portals/hub/_layouts/15/videoplayer.aspx?v=https%3A%2F%2Fjunction%2Esharepoint%2Ecom%2Fportals%2FIvy%2FpVid%2FWP%5F20150110%5F001%2Emp4" class="vp-largePictureLine1Link"> 
+                        <div class="vp-largePictureLine1 ms-noWrap vp-smallThumb-title">WP_20150110_001</div>
+                    </a>
+                    <div class="vp-largePictureLine2">0:19  
+                        <a id="ctl00_PlaceHolderMain_videoRelatedViewControl1_callout" class="vp-u-floatRight" href="#" onclick="openVideoCallout(this);" title="View Video" itemproperties="{&quot;Comment&quot;:&quot;&quot;,&quot;Author&quot;:&quot;Rob Howard&quot;,&quot;Source&quot;: &quot;/portals/hub/_layouts/15/videoplayback.aspx?IsDlg=1&amp;VideoItemUrl=https://junction.sharepoint.com%2Fportals%2FIvy%2FpVid%2FWP%5F20150110%5F001%2Emp4&amp;width=320&amp;height=180&quot;,&quot;Created&quot;:&quot;03/20/2015 17:05:11&quot;,&quot;Title&quot;:&quot;WP_20150110_001&quot;,&quot;VideoId&quot;:&quot;8a51441a-e41f-44f6-afb9-59ad35ed903c&quot;,&quot;ChannelId&quot;:&quot;e076d039-972a-4508-be36-ea53ca0e2c1e&quot;,&quot;ProcessingStatus&quot;:2,&quot;VideoIndexingUrl&quot;:&quot;https://junction.sharepoint.com/portals/Ivy/pVid/Forms/DispForm.aspx?ID=11&quot;}" ms-jsgrid-click-passthrough="true">
+                            <i class="ms-Icon ms-Icon--ellipsis"></i>
+                        </a>
+                    </div> 
+                </div>
+            </div>
+            <div class="vp-tile-block vp-thumbContainer vp-tile-width vp-tile-height">
+                <div class="vp-thumbImageContainer ms-bg-color-neutralLighterAlt vp-tile-width vp-tile-height">
+                    <a href="https://junction.sharepoint.com/portals/hub/_layouts/15/videoplayer.aspx?v=https%3A%2F%2Fjunction%2Esharepoint%2Ecom%2Fportals%2FIvy%2FpVid%2FWP%5F20150206%5F011%2Emp4"> 
+                        <img alt="Ring Around the Rosie" class="vp-thumbImage vp-tile-width vp-tile-height" src="https://junction.sharepoint.com/portals/Ivy/pVid/WP_20150206_011.mp4.PNG?VideoPreview=1&amp;width=220&amp;height=124" onerror="(event.srcElement ? event.srcElement : event.target).src = 'https://junction.sharepoint.com/portals/hub/_layouts/15/images/VIDEOPREVIEW.PNG?width=220&amp;height=124'"> 
+                    </a>
+                </div> 
+                <div class="vp-thumbDataOverlay vp-tile-width"></div>
+                <div class="vp-thumbDataContainer vp-tile-width">
+                    <a title="Ring Around the Rosie" href="https://junction.sharepoint.com/portals/hub/_layouts/15/videoplayer.aspx?v=https%3A%2F%2Fjunction%2Esharepoint%2Ecom%2Fportals%2FIvy%2FpVid%2FWP%5F20150206%5F011%2Emp4" class="vp-largePictureLine1Link"> 
+                        <div class="vp-largePictureLine1 ms-noWrap vp-smallThumb-title">Ring Around the Rosie</div>
+                    </a>
+                    <div class="vp-largePictureLine2">0:23 <span class="vp-description-separator ms-border-color-neutralTertiaryAlt"></span>9 views 
+                        <a id="ctl00_PlaceHolderMain_videoRelatedViewControl2_callout" class="vp-u-floatRight" href="#" onclick="openVideoCallout(this);" title="View Video" itemproperties="{&quot;Comment&quot;:&quot;Ivy waiting for her flight at SeaTac and singing Ring Around the Rosie&quot;,&quot;Author&quot;:&quot;Rob Howard&quot;,&quot;Source&quot;: &quot;/portals/hub/_layouts/15/videoplayback.aspx?IsDlg=1&amp;VideoItemUrl=https://junction.sharepoint.com%2Fportals%2FIvy%2FpVid%2FWP%5F20150206%5F011%2Emp4&amp;width=320&amp;height=180&quot;,&quot;Created&quot;:&quot;03/20/2015 17:04:00&quot;,&quot;Title&quot;:&quot;Ring Around the Rosie&quot;,&quot;VideoId&quot;:&quot;cbc778a7-dfdf-4f2b-96f2-ed696320c30f&quot;,&quot;ChannelId&quot;:&quot;e076d039-972a-4508-be36-ea53ca0e2c1e&quot;,&quot;ProcessingStatus&quot;:2,&quot;VideoIndexingUrl&quot;:&quot;https://junction.sharepoint.com/portals/Ivy/pVid/Forms/DispForm.aspx?ID=7&quot;}" ms-jsgrid-click-passthrough="true">
+                            <i class="ms-Icon ms-Icon--ellipsis"></i>
+                        </a>
+                    </div> 
+                </div>
+            </div>
+            <div class="vp-tile-block vp-thumbContainer vp-tile-width vp-tile-height">
+                <div class="vp-thumbImageContainer ms-bg-color-neutralLighterAlt vp-tile-width vp-tile-height">
+                    <a href="https://junction.sharepoint.com/portals/hub/_layouts/15/videoplayer.aspx?v=https%3A%2F%2Fjunction%2Esharepoint%2Ecom%2Fportals%2FIvy%2FpVid%2FWP%5F20150315%5F001%2Emp4"> 
+                        <img alt="WP_20150315_001" class="vp-thumbImage vp-tile-width vp-tile-height" src="https://junction.sharepoint.com/portals/Ivy/pVid/WP_20150315_001.mp4.PNG?VideoPreview=1&amp;width=220&amp;height=124" onerror="(event.srcElement ? event.srcElement : event.target).src = 'https://junction.sharepoint.com/portals/hub/_layouts/15/images/VIDEOPREVIEW.PNG?width=220&amp;height=124'"> 
+                    </a>
+                </div> 
+                <div class="vp-thumbDataOverlay vp-tile-width"></div>
+                <div class="vp-thumbDataContainer vp-tile-width">
+                    <a title="WP_20150315_001" href="https://junction.sharepoint.com/portals/hub/_layouts/15/videoplayer.aspx?v=https%3A%2F%2Fjunction%2Esharepoint%2Ecom%2Fportals%2FIvy%2FpVid%2FWP%5F20150315%5F001%2Emp4" class="vp-largePictureLine1Link"> 
+                        <div class="vp-largePictureLine1 ms-noWrap vp-smallThumb-title">WP_20150315_001</div>
+                    </a>
+                    <div class="vp-largePictureLine2">2:24 <span class="vp-description-separator ms-border-color-neutralTertiaryAlt"></span>1 views 
+                        <a id="ctl00_PlaceHolderMain_videoRelatedViewControl3_callout" class="vp-u-floatRight" href="#" onclick="openVideoCallout(this);" title="View Video" itemproperties="{&quot;Comment&quot;:&quot;&quot;,&quot;Author&quot;:&quot;Rob Howard&quot;,&quot;Source&quot;: &quot;/portals/hub/_layouts/15/videoplayback.aspx?IsDlg=1&amp;VideoItemUrl=https://junction.sharepoint.com%2Fportals%2FIvy%2FpVid%2FWP%5F20150315%5F001%2Emp4&amp;width=320&amp;height=180&quot;,&quot;Created&quot;:&quot;03/20/2015 17:02:13&quot;,&quot;Title&quot;:&quot;WP_20150315_001&quot;,&quot;VideoId&quot;:&quot;5573f86d-02af-4c5b-964c-1801978d9a15&quot;,&quot;ChannelId&quot;:&quot;e076d039-972a-4508-be36-ea53ca0e2c1e&quot;,&quot;ProcessingStatus&quot;:2,&quot;VideoIndexingUrl&quot;:&quot;https://junction.sharepoint.com/portals/Ivy/pVid/Forms/DispForm.aspx?ID=6&quot;}" ms-jsgrid-click-passthrough="true">
+                            <i class="ms-Icon ms-Icon--ellipsis"></i>
+                        </a>
+                    </div> 
+                </div>
+            </div></div>
+			</div>
+			
+			<div class="ms-yammerpanel-wrap">
+				<div id="ms-yammerpanel-wrap2"></div>
+			</div>
+		</div>
+			</div>
+		</div>
+	</div>
 </div>
