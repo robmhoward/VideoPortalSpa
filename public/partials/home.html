@@ -1,16 +1,16 @@
 <div class="container">
 
-	<div class="vp-header-featured">
+	<div class="vp-header-featured ms-bg-color-neutralPrimary">
 		<div class="vp-site-defaultWidth">
 			<div class="vp-tile-group">
-				<div class="vp-tile-block vp-thumbContainer vp-tile-width-x2 vp-tile-height-x2" ng-repeat="video in featuredVideos">
-	                <div class="vp-thumbImageContainer ms-bg-color-neutralLighterAlt vp-tile-width-x2 vp-tile-height-x2">
+				<div class="vp-tile-block vp-thumbContainer {{$index > 1 ? 'vp-tile-width vp-tile-height' : 'vp-tile-width-x2 vp-tile-height-x2'}}" ng-repeat="video in featuredVideos">
+	                <div class="vp-thumbImageContainer ms-bg-color-neutralLighterAlt {{$index > 1 ? 'vp-tile-width vp-tile-height' : 'vp-tile-width-x2 vp-tile-height-x2'}}">
 	                    <a href="#/channels/{{video.Video.ChannelID}}/videos/{{video.Video.ID}}"> 
-	                        <img class="vp-thumbImage vp-tile-width-x2 vp-tile-height-x2" alt="{{video.Video.Title}}" src="{{video.Video.ThumbnailUrl}}&amp;width=458&amp;height=266"> 
+	                        <img class="vp-thumbImage {{$index > 1 ? 'vp-tile-width vp-tile-height' : 'vp-tile-width-x2 vp-tile-height-x2'}}" alt="{{video.Video.Title}}" src="{{video.Video.ThumbnailUrl}}&amp;width=458&amp;height=266"> 
 	                    </a>
 	                </div> 
-	                <div class="vp-thumbDataOverlay vp-tile-width-x2"></div>
-	                <div class="vp-thumbDataContainer vp-tile-width-x2">
+	                <div class="vp-thumbDataOverlay {{$index > 1 ? 'vp-tile-width' : 'vp-tile-width-x2'}}"></div>
+	                <div class="vp-thumbDataContainer {{$index > 1 ? 'vp-tile-width' : 'vp-tile-width-x2'}}">
 	                    <a title="{{video.title}}" class="vp-largePictureLine1Link" href="#/channels/{{video.Video.ChannelID}}/videos/{{video.Video.ID}}"> 
 	                        <div class="vp-largePictureLine1 ms-noWrap vp-largeThumb-title">{{video.Video.Title}}</div>
 	                    </a>
@@ -28,7 +28,7 @@
 	<div class="vp-site-defaultWidth">
 	
 		<div class="vp-tile-group vp-u-clearLeft vp-header-bottom" id="ctl00_PlaceHolderMain_popularSection">
-			<a title="Popular" href="videosort.aspx?sort=p">
+			<a title="Popular" href="#/">
 				<div class="vp-header-bottom">
 					<div>
 						<span class="ms-font-xl ms-font-weight-semilight vp-channel-title vp-border-popular">Popular</span>
@@ -36,187 +36,26 @@
 					</div>
 				</div>
 			</a>
+
+			<div class="vp-tile-block vp-thumbContainer vp-tile-width vp-tile-height" ng-repeat="video in popularVideos">
+	            <div class="vp-thumbImageContainer ms-bg-color-neutralLighterAlt vp-tile-width vp-tile-height">
+	                <a href="#/channels/{{channel.Id}}/videos/{{video.ID}}"> 
+	                    <img class="vp-thumbImage vp-tile-width vp-tile-height" alt="{{video.Title}}" src="{{video.ThumbnailUrl}}&amp;width=220&amp;height=124"> 
+	                </a>
+	            </div> 
+	            <div class="vp-thumbDataOverlay vp-tile-width"></div>
+	            <div class="vp-thumbDataContainer vp-tile-width">
+	                <a title="{{video.Title}}" class="vp-largePictureLine1Link" href="#/channels/{{channel.Id}}/videos/{{video.ID}}"> 
+	                    <div class="vp-largePictureLine1 ms-noWrap vp-smallThumb-title">{{video.Title}}</div>
+	                </a>
+	                <div class="vp-largePictureLine2">{{video.VideoDurationInSeconds * 1000 | date:"mm:ss" }} <span class="vp-description-separator ms-border-color-neutralTertiaryAlt"></span>{{video.ViewCount}} views 
+	                    <a title="View Video" class="vp-u-floatRight" id="ctl00_PlaceHolderMain_ctl100_callout" onclick="openVideoCallout(this);" href="#" ms-jsgrid-click-passthrough="true">
+	                        <i class="ms-Icon ms-Icon--ellipsis"></i>
+	                    </a>
+	                </div> 
+	            </div>
+	        </div>
 				
-	        <div class="vp-tile-block vp-thumbContainer vp-tile-width vp-tile-height">
-	            <div class="vp-thumbImageContainer ms-bg-color-neutralLighterAlt vp-tile-width vp-tile-height">
-	                <a href="https://msft.spoppe.com/portals/hub/_layouts/15/videoplayer.aspx?v=https%3A%2F%2Fmsft%2Espoppe%2Ecom%2Fportals%2FASG%2520Spotlight%2FpVid%2FOneClip%2Emp4"> 
-	                    <img class="vp-thumbImage vp-tile-width vp-tile-height" onerror="(event.srcElement ? event.srcElement : event.target).src = 'https://msft.spoppe.com/portals/hub/_layouts/15/images/VIDEOPREVIEW.PNG?width=220&amp;height=124'" alt="OneClip" src="https://msft.spoppe.com/portals/ASG%20Spotlight/pVid/OneClip.mp4.PNG?VideoPreview=1&amp;width=220&amp;height=124"> 
-	                </a>
-	            </div> 
-	            <div class="vp-thumbDataOverlay vp-tile-width"></div>
-	            <div class="vp-thumbDataContainer vp-tile-width">
-	                <a title="OneClip" class="vp-largePictureLine1Link" href="https://msft.spoppe.com/portals/hub/_layouts/15/videoplayer.aspx?v=https%3A%2F%2Fmsft%2Espoppe%2Ecom%2Fportals%2FASG%2520Spotlight%2FpVid%2FOneClip%2Emp4"> 
-	                    <div class="vp-largePictureLine1 ms-noWrap vp-smallThumb-title">OneClip</div>
-	                </a>
-	                <div class="vp-largePictureLine2">4:20 <span class="vp-description-separator ms-border-color-neutralTertiaryAlt"></span>43 views 
-	                    <a title="View Video" class="vp-u-floatRight" id="ctl00_PlaceHolderMain_videoPopularViewControl0_callout" onclick="openVideoCallout(this);" href="#" ms-jsgrid-click-passthrough="true" itemproperties='{"Comment":"","Author":"Zach Pace","Source": "/portals/hub/_layouts/15/videoplayback.aspx?IsDlg=1&amp;VideoItemUrl=https://msft.spoppe.com%2Fportals%2FASG%20Spotlight%2FpVid%2FOneClip%2Emp4&amp;width=320&amp;height=180","Created":"01/14/2015 21:46:27","Title":"OneClip","VideoId":"7e3a715c-8d46-4e7a-a638-575de3b0edb2","ChannelId":"700b7fcf-b79d-4b77-8da2-fbbaa5081f2d","ProcessingStatus":2,"VideoIndexingUrl":"https://msft.spoppe.com/portals/ASG Spotlight/pVid/Forms/DispForm.aspx?ID=22"}'>
-	                        <i class="ms-Icon ms-Icon--ellipsis"></i>
-	                    </a>
-	                </div> 
-	            </div>
-	        </div>
-	        <div class="vp-tile-block vp-thumbContainer vp-tile-width vp-tile-height">
-	            <div class="vp-thumbImageContainer ms-bg-color-neutralLighterAlt vp-tile-width vp-tile-height">
-	                <a href="https://msft.spoppe.com/portals/hub/_layouts/15/videoplayer.aspx?v=https%3A%2F%2Fmsft%2Espoppe%2Ecom%2Fportals%2FODP%2FpVid%2FwordO365apis%2Emp4"> 
-	                    <img class="vp-thumbImage vp-tile-width vp-tile-height" onerror="(event.srcElement ? event.srcElement : event.target).src = 'https://msft.spoppe.com/portals/hub/_layouts/15/images/VIDEOPREVIEW.PNG?width=220&amp;height=124'" alt="Word REST APIs" src="https://msft.spoppe.com/portals/ODP/pVid/wordO365apis.mp4.PNG?VideoPreview=1&amp;width=220&amp;height=124"> 
-	                </a>
-	            </div> 
-	            <div class="vp-thumbDataOverlay vp-tile-width"></div>
-	            <div class="vp-thumbDataContainer vp-tile-width">
-	                <a title="Word REST APIs" class="vp-largePictureLine1Link" href="https://msft.spoppe.com/portals/hub/_layouts/15/videoplayer.aspx?v=https%3A%2F%2Fmsft%2Espoppe%2Ecom%2Fportals%2FODP%2FpVid%2FwordO365apis%2Emp4"> 
-	                    <div class="vp-largePictureLine1 ms-noWrap vp-smallThumb-title">Word REST APIs</div>
-	                </a>
-	                <div class="vp-largePictureLine2">1:44 <span class="vp-description-separator ms-border-color-neutralTertiaryAlt"></span>121 views 
-	                    <a title="View Video" class="vp-u-floatRight" id="ctl00_PlaceHolderMain_videoPopularViewControl1_callout" onclick="openVideoCallout(this);" href="#" ms-jsgrid-click-passthrough="true" itemproperties='{"Comment":"","Author":"Michael Saunders (OFFICE)","Source": "/portals/hub/_layouts/15/videoplayback.aspx?IsDlg=1&amp;VideoItemUrl=https://msft.spoppe.com%2Fportals%2FODP%2FpVid%2FwordO365apis%2Emp4&amp;width=320&amp;height=180","Created":"02/11/2015 20:04:14","Title":"Word REST APIs","VideoId":"e8f41475-69da-4559-b1dc-b5424530f768","ChannelId":"581c6e90-8847-47a6-b7c2-5bf421c5d751","ProcessingStatus":2,"VideoIndexingUrl":"https://msft.spoppe.com/portals/ODP/pVid/Forms/DispForm.aspx?ID=5"}'>
-	                        <i class="ms-Icon ms-Icon--ellipsis"></i>
-	                    </a>
-	                </div> 
-	            </div>
-	        </div>
-	        <div class="vp-tile-block vp-thumbContainer vp-tile-width vp-tile-height">
-	            <div class="vp-thumbImageContainer ms-bg-color-neutralLighterAlt vp-tile-width vp-tile-height">
-	                <a href="https://msft.spoppe.com/portals/hub/_layouts/15/videoplayer.aspx?v=https%3A%2F%2Fmsft%2Espoppe%2Ecom%2Fportals%2FO365%2520Video%2FpVid%2FO365%2520Video%2520Head%2520%2D%2520Overview%2Emp4"> 
-	                    <img class="vp-thumbImage vp-tile-width vp-tile-height" onerror="(event.srcElement ? event.srcElement : event.target).src = 'https://msft.spoppe.com/portals/hub/_layouts/15/images/VIDEOPREVIEW.PNG?width=220&amp;height=124'" alt="O365 Video Head - Overview!" src="https://msft.spoppe.com/portals/O365%20Video/pVid/O365%20Video%20Head%20-%20Overview.mp4.PNG?VideoPreview=1&amp;width=220&amp;height=124"> 
-	                </a>
-	            </div> 
-	            <div class="vp-thumbDataOverlay vp-tile-width"></div>
-	            <div class="vp-thumbDataContainer vp-tile-width">
-	                <a title="O365 Video Head - Overview!" class="vp-largePictureLine1Link" href="https://msft.spoppe.com/portals/hub/_layouts/15/videoplayer.aspx?v=https%3A%2F%2Fmsft%2Espoppe%2Ecom%2Fportals%2FO365%2520Video%2FpVid%2FO365%2520Video%2520Head%2520%2D%2520Overview%2Emp4"> 
-	                    <div class="vp-largePictureLine1 ms-noWrap vp-smallThumb-title">O365 Video Head - Overview!</div>
-	                </a>
-	                <div class="vp-largePictureLine2">1:25 <span class="vp-description-separator ms-border-color-neutralTertiaryAlt"></span>576 views 
-	                    <a title="View Video" class="vp-u-floatRight" id="ctl00_PlaceHolderMain_videoPopularViewControl2_callout" onclick="openVideoCallout(this);" href="#" ms-jsgrid-click-passthrough="true" itemproperties='{"Comment":"","Author":"Marc Mroz","Source": "/portals/hub/_layouts/15/videoplayback.aspx?IsDlg=1&amp;VideoItemUrl=https://msft.spoppe.com%2Fportals%2FO365%20Video%2FpVid%2FO365%20Video%20Head%20%2D%20Overview%2Emp4&amp;width=320&amp;height=180","Created":"10/16/2014 15:15:19","Title":"O365 Video Head - Overview!","VideoId":"b6947bd5-139c-45b0-ad1d-cdac00607a5f","ChannelId":"f392088c-6238-4a24-b525-9dfb93fcaf1b","ProcessingStatus":2,"VideoIndexingUrl":"https://msft.spoppe.com/portals/O365 Video/pVid/Forms/DispForm.aspx?ID=18"}'>
-	                        <i class="ms-Icon ms-Icon--ellipsis"></i>
-	                    </a>
-	                </div> 
-	            </div>
-	        </div>
-	        <div class="vp-tile-block vp-thumbContainer vp-tile-width vp-tile-height">
-	            <div class="vp-thumbImageContainer ms-bg-color-neutralLighterAlt vp-tile-width vp-tile-height">
-	                <a href="https://msft.spoppe.com/portals/hub/_layouts/15/videoplayer.aspx?v=https%3A%2F%2Fmsft%2Espoppe%2Ecom%2Fportals%2FSharePoint%2FpVid%2FSharePoint%2520Vision%2Ewmv"> 
-	                    <img class="vp-thumbImage vp-tile-width vp-tile-height" onerror="(event.srcElement ? event.srcElement : event.target).src = 'https://msft.spoppe.com/portals/hub/_layouts/15/images/VIDEOPREVIEW.PNG?width=220&amp;height=124'" alt="SharePoint Vision" src="https://msft.spoppe.com/portals/SharePoint/pVid/SharePoint%20Vision.wmv.PNG?VideoPreview=1&amp;width=220&amp;height=124"> 
-	                </a>
-	            </div> 
-	            <div class="vp-thumbDataOverlay vp-tile-width"></div>
-	            <div class="vp-thumbDataContainer vp-tile-width">
-	                <a title="SharePoint Vision" class="vp-largePictureLine1Link" href="https://msft.spoppe.com/portals/hub/_layouts/15/videoplayer.aspx?v=https%3A%2F%2Fmsft%2Espoppe%2Ecom%2Fportals%2FSharePoint%2FpVid%2FSharePoint%2520Vision%2Ewmv"> 
-	                    <div class="vp-largePictureLine1 ms-noWrap vp-smallThumb-title">SharePoint Vision</div>
-	                </a>
-	                <div class="vp-largePictureLine2">1:45 <span class="vp-description-separator ms-border-color-neutralTertiaryAlt"></span>371 views 
-	                    <a title="View Video" class="vp-u-floatRight" id="ctl00_PlaceHolderMain_videoPopularViewControl3_callout" onclick="openVideoCallout(this);" href="#" ms-jsgrid-click-passthrough="true" itemproperties='{"Comment":"","Author":"Marc Mroz","Source": "/portals/hub/_layouts/15/videoplayback.aspx?IsDlg=1&amp;VideoItemUrl=https://msft.spoppe.com%2Fportals%2FSharePoint%2FpVid%2FSharePoint%20Vision%2Ewmv&amp;width=320&amp;height=180","Created":"10/14/2014 00:52:30","Title":"SharePoint Vision","VideoId":"8e247388-f14d-46d5-8517-e27c4461063a","ChannelId":"b74774cb-faad-43a0-8de9-cb263e38d75d","ProcessingStatus":2,"VideoIndexingUrl":"https://msft.spoppe.com/portals/SharePoint/pVid/Forms/DispForm.aspx?ID=10"}'>
-	                        <i class="ms-Icon ms-Icon--ellipsis"></i>
-	                    </a>
-	                </div> 
-	            </div>
-	        </div>
-	        <div class="vp-tile-block vp-thumbContainer vp-tile-width vp-tile-height">
-	            <div class="vp-thumbImageContainer ms-bg-color-neutralLighterAlt vp-tile-width vp-tile-height">
-	                <a href="https://msft.spoppe.com/portals/hub/_layouts/15/videoplayer.aspx?v=https%3A%2F%2Fmsft%2Espoppe%2Ecom%2Fportals%2FHackday%2FpVid%2FClippy%2527s%2520Hack%2520Day%2Ewmv"> 
-	                    <img class="vp-thumbImage vp-tile-width vp-tile-height" onerror="(event.srcElement ? event.srcElement : event.target).src = 'https://msft.spoppe.com/portals/hub/_layouts/15/images/VIDEOPREVIEW.PNG?width=220&amp;height=124'" alt="Clippy's Hack Day" src="https://msft.spoppe.com/portals/Hackday/pVid/Clippy%27s%20Hack%20Day.wmv.PNG?VideoPreview=1&amp;width=220&amp;height=124"> 
-	                </a>
-	            </div> 
-	            <div class="vp-thumbDataOverlay vp-tile-width"></div>
-	            <div class="vp-thumbDataContainer vp-tile-width">
-	                <a title="Clippy's Hack Day" class="vp-largePictureLine1Link" href="https://msft.spoppe.com/portals/hub/_layouts/15/videoplayer.aspx?v=https%3A%2F%2Fmsft%2Espoppe%2Ecom%2Fportals%2FHackday%2FpVid%2FClippy%2527s%2520Hack%2520Day%2Ewmv"> 
-	                    <div class="vp-largePictureLine1 ms-noWrap vp-smallThumb-title">Clippy's Hack Day</div>
-	                </a>
-	                <div class="vp-largePictureLine2">4:19 <span class="vp-description-separator ms-border-color-neutralTertiaryAlt"></span>5 views 
-	                    <a title="View Video" class="vp-u-floatRight" id="ctl00_PlaceHolderMain_videoPopularViewControl4_callout" onclick="openVideoCallout(this);" href="#" ms-jsgrid-click-passthrough="true" itemproperties="{&quot;Comment&quot;:&quot;&quot;,&quot;Author&quot;:&quot;Ian Clanton-Thuon&quot;,&quot;Source&quot;: &quot;/portals/hub/_layouts/15/videoplayback.aspx?IsDlg=1&amp;VideoItemUrl=https://msft.spoppe.com%2Fportals%2FHackday%2FpVid%2FClippy%27s%20Hack%20Day%2Ewmv&amp;width=320&amp;height=180&quot;,&quot;Created&quot;:&quot;01/29/2015 00:55:06&quot;,&quot;Title&quot;:&quot;Clippy's Hack Day&quot;,&quot;VideoId&quot;:&quot;6e553343-813c-4428-b48e-3f235a2cde3d&quot;,&quot;ChannelId&quot;:&quot;1ba0b473-288b-4891-a6fe-688cf066f0ac&quot;,&quot;ProcessingStatus&quot;:2,&quot;VideoIndexingUrl&quot;:&quot;https://msft.spoppe.com/portals/Hackday/pVid/Forms/DispForm.aspx?ID=6&quot;}">
-	                        <i class="ms-Icon ms-Icon--ellipsis"></i>
-	                    </a>
-	                </div> 
-	            </div>
-	        </div>
-	        <div class="vp-tile-block vp-thumbContainer vp-tile-width vp-tile-height">
-	            <div class="vp-thumbImageContainer ms-bg-color-neutralLighterAlt vp-tile-width vp-tile-height">
-	                <a href="https://msft.spoppe.com/portals/hub/_layouts/15/videoplayer.aspx?v=https%3A%2F%2Fmsft%2Espoppe%2Ecom%2Fportals%2Ftest%2520by%2520Bo%2FpVid%2FSmallFile1%2Emp4"> 
-	                    <img class="vp-thumbImage vp-tile-width vp-tile-height" onerror="(event.srcElement ? event.srcElement : event.target).src = 'https://msft.spoppe.com/portals/hub/_layouts/15/images/VIDEOPREVIEW.PNG?width=220&amp;height=124'" alt="SmallFile1" src="https://msft.spoppe.com/portals/test%20by%20Bo/pVid/SmallFile1.mp4.PNG?VideoPreview=1&amp;width=220&amp;height=124"> 
-	                </a>
-	            </div> 
-	            <div class="vp-thumbDataOverlay vp-tile-width"></div>
-	            <div class="vp-thumbDataContainer vp-tile-width">
-	                <a title="SmallFile1" class="vp-largePictureLine1Link" href="https://msft.spoppe.com/portals/hub/_layouts/15/videoplayer.aspx?v=https%3A%2F%2Fmsft%2Espoppe%2Ecom%2Fportals%2Ftest%2520by%2520Bo%2FpVid%2FSmallFile1%2Emp4"> 
-	                    <div class="vp-largePictureLine1 ms-noWrap vp-smallThumb-title">SmallFile1</div>
-	                </a>
-	                <div class="vp-largePictureLine2">0:44 <span class="vp-description-separator ms-border-color-neutralTertiaryAlt"></span>3 views 
-	                    <a title="View Video" class="vp-u-floatRight" id="ctl00_PlaceHolderMain_videoPopularViewControl5_callout" onclick="openVideoCallout(this);" href="#" ms-jsgrid-click-passthrough="true" itemproperties='{"Comment":"","Author":"Sam Xuan","Source": "/portals/hub/_layouts/15/videoplayback.aspx?IsDlg=1&amp;VideoItemUrl=https://msft.spoppe.com%2Fportals%2Ftest%20by%20Bo%2FpVid%2FSmallFile1%2Emp4&amp;width=320&amp;height=180","Created":"03/02/2015 21:49:27","Title":"SmallFile1","VideoId":"5cd8a793-3644-4e1b-979c-0e67f73726e5","ChannelId":"ffab683b-0556-46b5-b713-8222d59f3452","ProcessingStatus":2,"VideoIndexingUrl":"https://msft.spoppe.com/portals/test by Bo/pVid/Forms/DispForm.aspx?ID=5"}'>
-	                        <i class="ms-Icon ms-Icon--ellipsis"></i>
-	                    </a>
-	                </div> 
-	            </div>
-	        </div>
-	        <div class="vp-tile-block vp-thumbContainer vp-tile-width vp-tile-height">
-	            <div class="vp-thumbImageContainer ms-bg-color-neutralLighterAlt vp-tile-width vp-tile-height">
-	                <a href="https://msft.spoppe.com/portals/hub/_layouts/15/videoplayer.aspx?v=https%3A%2F%2Fmsft%2Espoppe%2Ecom%2Fportals%2FMPEG%2DDASH%21%2FpVid%2FVideo%2520Background%2520%2D%2520Brown%2520Bags%2520%2D%25201st%252010%2520seconds%2520%2D%2520Fade%2520Grey%2520Between%2Emp4"> 
-	                    <img class="vp-thumbImage vp-tile-width vp-tile-height" onerror="(event.srcElement ? event.srcElement : event.target).src = 'https://msft.spoppe.com/portals/hub/_layouts/15/images/VIDEOPREVIEW.PNG?width=220&amp;height=124'" alt="Something &amp; Video Background - Brown Bags - 1st 10 seconds - Fade Grey Between" src="https://msft.spoppe.com/portals/MPEG-DASH!/pVid/Video%20Background%20-%20Brown%20Bags%20-%201st%2010%20seconds%20-%20Fade%20Grey%20Between.mp4.PNG?VideoPreview=1&amp;width=220&amp;height=124"> 
-	                </a>
-	            </div> 
-	            <div class="vp-thumbDataOverlay vp-tile-width"></div>
-	            <div class="vp-thumbDataContainer vp-tile-width">
-	                <a title="Something &amp; Video Background - Brown Bags - 1st 10 seconds - Fade Grey Between" class="vp-largePictureLine1Link" href="https://msft.spoppe.com/portals/hub/_layouts/15/videoplayer.aspx?v=https%3A%2F%2Fmsft%2Espoppe%2Ecom%2Fportals%2FMPEG%2DDASH%21%2FpVid%2FVideo%2520Background%2520%2D%2520Brown%2520Bags%2520%2D%25201st%252010%2520seconds%2520%2D%2520Fade%2520Grey%2520Between%2Emp4"> 
-	                    <div class="vp-largePictureLine1 ms-noWrap vp-smallThumb-title">Something &amp; Video Background - Brown Bags - 1st 10 seconds - Fade Grey Between</div>
-	                </a>
-	                <div class="vp-largePictureLine2">0:34 <span class="vp-description-separator ms-border-color-neutralTertiaryAlt"></span>12 views 
-	                    <a title="View Video" class="vp-u-floatRight" id="ctl00_PlaceHolderMain_videoPopularViewControl6_callout" onclick="openVideoCallout(this);" href="#" ms-jsgrid-click-passthrough="true" itemproperties='{"Comment":"","Author":"Marc Mroz","Source": "/portals/hub/_layouts/15/videoplayback.aspx?IsDlg=1&amp;VideoItemUrl=https://msft.spoppe.com%2Fportals%2FMPEG%2DDASH%21%2FpVid%2FVideo%20Background%20%2D%20Brown%20Bags%20%2D%201st%2010%20seconds%20%2D%20Fade%20Grey%20Between%2Emp4&amp;width=320&amp;height=180","Created":"03/06/2015 22:40:07","Title":"Something &amp; Video Background - Brown Bags - 1st 10 seconds - Fade Grey Between","VideoId":"6072a499-0678-496f-b8fd-56ab1910bd36","ChannelId":"1b671276-0f0f-4692-92b8-8dfd067a8063","ProcessingStatus":2,"VideoIndexingUrl":"https://msft.spoppe.com/portals/MPEG-DASH!/pVid/Forms/DispForm.aspx?ID=5"}'>
-	                        <i class="ms-Icon ms-Icon--ellipsis"></i>
-	                    </a>
-	                </div> 
-	            </div>
-	        </div>
-	        <div class="vp-tile-block vp-thumbContainer vp-tile-width vp-tile-height">
-	            <div class="vp-thumbImageContainer ms-bg-color-neutralLighterAlt vp-tile-width vp-tile-height">
-	                <a href="https://msft.spoppe.com/portals/hub/_layouts/15/videoplayer.aspx?v=https%3A%2F%2Fmsft%2Espoppe%2Ecom%2Fportals%2FMPEG%2DDASH%21%2FpVid%2FVideo%2520Background%2520%2D%2520Cosmos%2520%2D%25202nd%252010%2520seconds%2520%2D%2520Fade%2520Grey%2520Between%2Emp4"> 
-	                    <img class="vp-thumbImage vp-tile-width vp-tile-height" onerror="(event.srcElement ? event.srcElement : event.target).src = 'https://msft.spoppe.com/portals/hub/_layouts/15/images/VIDEOPREVIEW.PNG?width=220&amp;height=124'" alt="Video Background - Cosmos - 2nd 10 seconds - Fade Grey Between" src="https://msft.spoppe.com/portals/MPEG-DASH!/pVid/Video%20Background%20-%20Cosmos%20-%202nd%2010%20seconds%20-%20Fade%20Grey%20Between.mp4.PNG?VideoPreview=1&amp;width=220&amp;height=124"> 
-	                </a>
-	            </div> 
-	            <div class="vp-thumbDataOverlay vp-tile-width"></div>
-	            <div class="vp-thumbDataContainer vp-tile-width">
-	                <a title="Video Background - Cosmos - 2nd 10 seconds - Fade Grey Between" class="vp-largePictureLine1Link" href="https://msft.spoppe.com/portals/hub/_layouts/15/videoplayer.aspx?v=https%3A%2F%2Fmsft%2Espoppe%2Ecom%2Fportals%2FMPEG%2DDASH%21%2FpVid%2FVideo%2520Background%2520%2D%2520Cosmos%2520%2D%25202nd%252010%2520seconds%2520%2D%2520Fade%2520Grey%2520Between%2Emp4"> 
-	                    <div class="vp-largePictureLine1 ms-noWrap vp-smallThumb-title">Video Background - Cosmos - 2nd 10 seconds - Fade Grey Between</div>
-	                </a>
-	                <div class="vp-largePictureLine2">0:58 <span class="vp-description-separator ms-border-color-neutralTertiaryAlt"></span>8 views 
-	                    <a title="View Video" class="vp-u-floatRight" id="ctl00_PlaceHolderMain_videoPopularViewControl7_callout" onclick="openVideoCallout(this);" href="#" ms-jsgrid-click-passthrough="true" itemproperties='{"Comment":"","Author":"Marc Mroz","Source": "/portals/hub/_layouts/15/videoplayback.aspx?IsDlg=1&amp;VideoItemUrl=https://msft.spoppe.com%2Fportals%2FMPEG%2DDASH%21%2FpVid%2FVideo%20Background%20%2D%20Cosmos%20%2D%202nd%2010%20seconds%20%2D%20Fade%20Grey%20Between%2Emp4&amp;width=320&amp;height=180","Created":"03/06/2015 22:41:01","Title":"Video Background - Cosmos - 2nd 10 seconds - Fade Grey Between","VideoId":"c15b67bb-e6a8-4a56-bc07-e12f8d3cf8e1","ChannelId":"1b671276-0f0f-4692-92b8-8dfd067a8063","ProcessingStatus":2,"VideoIndexingUrl":"https://msft.spoppe.com/portals/MPEG-DASH!/pVid/Forms/DispForm.aspx?ID=10"}'>
-	                        <i class="ms-Icon ms-Icon--ellipsis"></i>
-	                    </a>
-	                </div> 
-	            </div>
-	        </div>
-	        <div class="vp-tile-block vp-thumbContainer vp-tile-width vp-tile-height">
-	            <div class="vp-thumbImageContainer ms-bg-color-neutralLighterAlt vp-tile-width vp-tile-height">
-	                <a href="https://msft.spoppe.com/portals/hub/_layouts/15/videoplayer.aspx?v=https%3A%2F%2Fmsft%2Espoppe%2Ecom%2Fportals%2Fianc%2520screencaps%2FpVid%2FScreenCapture%5F3%2D11%2D2015%25202%2E22%2E27%2520PM%2Ewmv"> 
-	                    <img class="vp-thumbImage vp-tile-width vp-tile-height" onerror="(event.srcElement ? event.srcElement : event.target).src = 'https://msft.spoppe.com/portals/hub/_layouts/15/images/VIDEOPREVIEW.PNG?width=220&amp;height=124'" alt="ScreenCapture_3-11-2015 2.22.27 PM" src="https://msft.spoppe.com/portals/ianc%20screencaps/pVid/ScreenCapture_3-11-2015%202.22.27%20PM.wmv.PNG?VideoPreview=1&amp;width=220&amp;height=124"> 
-	                </a>
-	            </div> 
-	            <div class="vp-thumbDataOverlay vp-tile-width"></div>
-	            <div class="vp-thumbDataContainer vp-tile-width">
-	                <a title="ScreenCapture_3-11-2015 2.22.27 PM" class="vp-largePictureLine1Link" href="https://msft.spoppe.com/portals/hub/_layouts/15/videoplayer.aspx?v=https%3A%2F%2Fmsft%2Espoppe%2Ecom%2Fportals%2Fianc%2520screencaps%2FpVid%2FScreenCapture%5F3%2D11%2D2015%25202%2E22%2E27%2520PM%2Ewmv"> 
-	                    <div class="vp-largePictureLine1 ms-noWrap vp-smallThumb-title">ScreenCapture_3-11-2015 2.22.27 PM</div>
-	                </a>
-	                <div class="vp-largePictureLine2">0:19 <span class="vp-description-separator ms-border-color-neutralTertiaryAlt"></span>2 views 
-	                    <a title="View Video" class="vp-u-floatRight" id="ctl00_PlaceHolderMain_videoPopularViewControl8_callout" onclick="openVideoCallout(this);" href="#" ms-jsgrid-click-passthrough="true" itemproperties='{"Comment":"","Author":"Ian Clanton-Thuon","Source": "/portals/hub/_layouts/15/videoplayback.aspx?IsDlg=1&amp;VideoItemUrl=https://msft.spoppe.com%2Fportals%2Fianc%20screencaps%2FpVid%2FScreenCapture%5F3%2D11%2D2015%202%2E22%2E27%20PM%2Ewmv&amp;width=320&amp;height=180","Created":"03/11/2015 21:23:16","Title":"ScreenCapture_3-11-2015 2.22.27 PM","VideoId":"bcd52452-dfd7-4296-aeb4-b60be51f5d51","ChannelId":"16f7309b-62d1-41d3-8a9b-41e968f1ba32","ProcessingStatus":2,"VideoIndexingUrl":"https://msft.spoppe.com/portals/ianc screencaps/pVid/Forms/DispForm.aspx?ID=5"}'>
-	                        <i class="ms-Icon ms-Icon--ellipsis"></i>
-	                    </a>
-	                </div> 
-	            </div>
-	        </div>
-	        <div class="vp-tile-block vp-thumbContainer vp-tile-width vp-tile-height">
-	            <div class="vp-thumbImageContainer ms-bg-color-neutralLighterAlt vp-tile-width vp-tile-height">
-	                <a href="https://msft.spoppe.com/portals/hub/_layouts/15/videoplayer.aspx?v=https%3A%2F%2Fmsft%2Espoppe%2Ecom%2Fportals%2FFAST%2520Troms%C3%B8%2FpVid%2FPICW%2520BrownBag%2520%2D%2520Friday%2C%2520November%25207%2C%25202014%252012%2E02%2E49%2520PM%2Emp4"> 
-	                    <img class="vp-thumbImage vp-tile-width vp-tile-height" onerror="(event.srcElement ? event.srcElement : event.target).src = 'https://msft.spoppe.com/portals/hub/_layouts/15/images/VIDEOPREVIEW.PNG?width=220&amp;height=124'" alt="PICW BrownBag - Friday, November 7, 2014 12.02.49 PM" src="https://msft.spoppe.com/portals/FAST%20Troms%C3%B8/pVid/PICW%20BrownBag%20-%20Friday,%20November%207,%202014%2012.02.49%20PM.mp4.PNG?VideoPreview=1&amp;width=220&amp;height=124"> 
-	                </a>
-	            </div> 
-	            <div class="vp-thumbDataOverlay vp-tile-width"></div>
-	            <div class="vp-thumbDataContainer vp-tile-width">
-	                <a title="PICW BrownBag - Friday, November 7, 2014 12.02.49 PM" class="vp-largePictureLine1Link" href="https://msft.spoppe.com/portals/hub/_layouts/15/videoplayer.aspx?v=https%3A%2F%2Fmsft%2Espoppe%2Ecom%2Fportals%2FFAST%2520Troms%C3%B8%2FpVid%2FPICW%2520BrownBag%2520%2D%2520Friday%2C%2520November%25207%2C%25202014%252012%2E02%2E49%2520PM%2Emp4"> 
-	                    <div class="vp-largePictureLine1 ms-noWrap vp-smallThumb-title">PICW BrownBag - Friday, November 7, 2014 12.02.49 PM</div>
-	                </a>
-	                <div class="vp-largePictureLine2">52:31 <span class="vp-description-separator ms-border-color-neutralTertiaryAlt"></span>3 views 
-	                    <a title="View Video" class="vp-u-floatRight" id="ctl00_PlaceHolderMain_videoPopularViewControl9_callout" onclick="openVideoCallout(this);" href="#" ms-jsgrid-click-passthrough="true" itemproperties='{"Comment":"","Author":"Filip Nicolaisen","Source": "/portals/hub/_layouts/15/videoplayback.aspx?IsDlg=1&amp;VideoItemUrl=https://msft.spoppe.com%2Fportals%2FFAST%20Troms%C3%B8%2FpVid%2FPICW%20BrownBag%20%2D%20Friday%2C%20November%207%2C%202014%2012%2E02%2E49%20PM%2Emp4&amp;width=320&amp;height=180","Created":"12/01/2014 14:44:20","Title":"PICW BrownBag - Friday, November 7, 2014 12.02.49 PM","VideoId":"4f2136d6-ba23-4099-a751-fadf80f78771","ChannelId":"54bea18a-90dd-4ebd-aea6-119def1245ed","ProcessingStatus":2,"VideoIndexingUrl":"https://msft.spoppe.com/portals/FAST Tromsø/pVid/Forms/DispForm.aspx?ID=5"}'>
-	                        <i class="ms-Icon ms-Icon--ellipsis"></i>
-	                    </a>
-	                </div> 
-	            </div>
-	        </div>
 		</div>
 
 		<div class="vp-tile-group inlineBlockDisplay vp-u-clearLeft vp-u-spacer vp-thumbnail-section" ng-repeat="channel in channels">

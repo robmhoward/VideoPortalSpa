@@ -10,7 +10,9 @@ var videoPortalApp = angular.module("videoPortalApp", ['ngRoute', 'AdalAngular']
 			return $http.get(baseUrl + 'spotlightVideos?$top=4&$expand=Video');
 		};
 		factory.getPopularVideos = function () {
-
+			$http.defaults.useXDomain = true;
+			delete $http.defaults.headers.common['X-Requested-With'];
+			return $http.get(baseUrl + 'search/popular?$top=10');
 		};
 		factory.getChannelVideos = function (channelId) {
 			$http.defaults.useXDomain = true;
@@ -25,8 +27,13 @@ var videoPortalApp = angular.module("videoPortalApp", ['ngRoute', 'AdalAngular']
 		factory.getPlaybackUrl = function(channelId, videoId) {
 			$http.defaults.useXDomain = true;
 			delete $http.defaults.headers.common['X-Requested-With'];
-			return $http.get(baseUrl + 'channels(guid\'' + channelId + '\')/videos(guid\'' + videoId + '\')/getPlaybackUrl');			
+			return $http.get(baseUrl + 'channels(guid\'' + channelId + '\')/videos(guid\'' + videoId + '\')/getPlaybackUrl');
 		};
+		factory.getStreamingToken = function(channelId, videoId) {
+			$http.defaults.useXDomain = true;
+			delete $http.defaults.headers.common['X-Requested-With'];
+			return $http.get(baseUrl + 'channels(guid\'' + channelId + '\')/videos(guid\'' + videoId + '\')/getStreamingKeyAccessToken');						
+		}
 
 		factory.getChannels = function() {
 			$http.defaults.useXDomain = true;
@@ -81,6 +88,10 @@ videoPortalApp.controller("HomeController", function($scope, videosFactory) {
 		$scope.featuredVideos = results.value;
 		console.log("Featured videos returned: " + $scope.featuredVideos.length);
 	});
+	videosFactory.getPopularVideos().success(function (results) {
+		$scope.popularVideos = results.value;
+		console.log("Popular videos returned: " + $scope.popularVideos.length);
+	});
 	videosFactory.getChannels().success(function (results) { 
 		$scope.channels = results.value; 
 		console.log("Channels returned: " + $scope.channels.length);
@@ -96,18 +107,30 @@ videoPortalApp.controller("ChannelController", function($scope, $routeParams, vi
 });
 
 videoPortalApp.controller("VideoController", function($scope, $routeParams, $sce, videosFactory) {
-	videosFactory.getPlaybackUrl($routeParams.channelId, $routeParams.videoId).success(function (results) {
-		console.log("Playback URL success");
-		var splitUrl = results.value.split("&token=");
-		var url = encodeURIComponent(splitUrl[0].split("?playbackUrl=")[1]);
-		var token = splitUrl[1];
-		var videoEmbedUrl = "//aka.ms/azuremediaplayeriframe?url=" + url + "&protection=aes&token=" + token + "&autoplay=false";
+
+	function constructEmbedUrl() {
+		var videoEmbedUrl = "//aka.ms/azuremediaplayeriframe?url=" + encodeURIComponent($scope.playbackUrl) + "&protection=aes&token=" + encodeURIComponent($scope.accessToken) + "&autoplay=false";
 		$scope.videoEmbedUrl = $sce.trustAsResourceUrl(videoEmbedUrl);
+	}
+
+	videosFactory.getStreamingToken($routeParams.channelId, $routeParams.videoId).success(function (results) {
+		console.log("Playback token returned");
+		$scope.accessToken = results.value;
+		if ($scope.playbackUrl) {
+			constructEmbedUrl();
+		}
+	});
+	videosFactory.getPlaybackUrl($routeParams.channelId, $routeParams.videoId).success(function (results) {
 		console.log("Playback URL returned");
+		$scope.playbackUrl = results.value;
+		if ($scope.accessToken) {
+			constructEmbedUrl();
+		}
 	});
 	videosFactory.getVideo($routeParams.channelId, $routeParams.videoId).success(function (results) { 
 		$scope.video = results; 
 		console.log("Video returned");
 	});
+	videosFactory.getChannel
 
 });
