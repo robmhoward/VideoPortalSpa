@@ -1,8 +1,10 @@
+var tenantName = "junction.sharepoint.com";
+
 var videoPortalApp = angular.module("videoPortalApp", ['ngRoute', 'AdalAngular'])
 	.factory('videosFactory', ['$http', function ($http) {
 		var factory = {};
 
-		var baseUrl = "https://junction.sharepoint.com/portals/hub/_api/videoService/";
+		var baseUrl = "https://" + tenantName + "/portals/hub/_api/videoService/";
 
 		factory.getFeaturedVideos = function () {
 			$http.defaults.useXDomain = true;
@@ -22,7 +24,7 @@ var videoPortalApp = angular.module("videoPortalApp", ['ngRoute', 'AdalAngular']
 		factory.getPopularChannelVideos = function (channelId) {
 			$http.defaults.useXDomain = true;
 			delete $http.defaults.headers.common['X-Requested-With'];
-			return $http.get(baseUrl + 'channels(guid\'' + channelId + '\')/search/popular');			
+			return $http.get(baseUrl + 'channels(guid\'' + channelId + '\')/search/popular');
 		}
 		factory.getChannelVideos = function (channelId) {
 			$http.defaults.useXDomain = true;
@@ -94,7 +96,7 @@ videoPortalApp.config(['$routeProvider', '$httpProvider', 'adalAuthenticationSer
 			clientId: '5e188fc6-f4ac-40cb-9373-a75d7efa4e1c', 
 			extraQueryParameter: 'nux=1', 
 			endpoints: {
-				"https://junction.sharepoint.com/portals/hub/_api/": "https://junction.sharepoint.com"
+				"https://junction.sharepoint.com/portals/hub/_api/": "https://" + tenantName
 			}
 			//cacheLocation: 'localStorage', // enable this for IE, as sessionStorage does not work for localhost. 
 		}, 
@@ -111,7 +113,7 @@ videoPortalApp.controller("HomeController", function($scope, videosFactory) {
 		$scope.popularVideos = results.value;
 		console.log("Popular videos returned: " + $scope.popularVideos.length);
 	});
-	videosFactory.getChannels().success(function (results) { 
+	videosFactory.getChannelsAndVideos().success(function (results) { 
 		$scope.channels = results.value; 
 		console.log("Channels returned: " + $scope.channels.length);
 	});

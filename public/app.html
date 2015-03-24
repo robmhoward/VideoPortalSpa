@@ -7,6 +7,8 @@
 	
 	<link href="https://r3.res.outlook.com/o365/versionless/wexvpstyles_7019ab5.css" rel="stylesheet" type="text/css" />
 	<link href="https://junction.sharepoint.com/_layouts/15/1033/styles/videoportal.css?rev=lZQ96jWdIKWOYUNzwKd5Iw%3D%3DTAG3" rel="stylesheet" type="text/css" />
+	<link href="https://prod.msocdn.com/16.00.0670.004/en-US/css/shellg2corecss_19dee4f7.css" rel="stylesheet" type="text/css" />
+	<link href="https://prod.msocdn.com/16.00.0670.004/en-US/css/shellg2pluscss_bb2ca836.css" rel="stylesheet" type="text/css" />
 	
 
 </head>
@@ -15,48 +17,48 @@
 
 <div class="videoContainer">
 			<div class="vp-SetView-content">
-				<div class="vp-SetView-commandBar">
-					<div class="ms-NavBar vp-NavBar"> 
-						<div class="vp-NavBar-search"> 
-							<button tabindex="0" class="vp-NavBar-searchButton o365button" type="button">
-								<i class="ms-Icon ms-Icon--search ms-font-l"></i>
-							</button> 
-						</div> 
-						<div class="vp-NavBar-leftArea"> 
-							<ul class="ms-NavBar-items vp-NavBar-items"> 
-								<li class="ms-NavBar-item vp-NavBar-item">
-									<button href="#/" tabindex="1" class="vp-NavBar-button vp-NavBar-button--home o365button" type="button">
-										<div class="vp-NavBar-buttonInner">
-											<span class="vp-NavBar-commandText ms-font-m ms-font-weight-regular">Home</span>
+
+				<div id="s4-ribbonrow" class="vp-ribbonRow ms-bg-color-neutralLighter s4-nosetwidth" style="height: 35px;">
+					<div id="nav-buttons" class="topNav-buttons">
+						<div id="ctl00_panelNavBar">
+	
+							<a href="#" class="ms-nav-button ms-nav-button--borderless">
+								<i id="searchButton" class="ms-Icon ms-Icon--search"></i>
+							</a>
+		
+		
+							<div id="pageTitle" class="vp-topNav-margin">
+										<div id="homeDiv">
+											<a id="homeDiv-button" href="#/" class="ms-nav-button">
+												Home
+											</a>
 										</div>
-									</button> 
-								</li> 
-								<li class="ms-NavBar-item vp-NavBar-item">
-									<button href='#/channels' tabindex="2" class="vp-NavBar-button vp-NavBar-button--channels o365button" type="button">
-										<div class="vp-NavBar-buttonInner">
-											<span class="vp-NavBar-commandText ms-font-m ms-font-weight-regular">Channels</span>
-										</div>
-									</button> 
-								</li> 
-							</ul> 
-						</div> 
-						<div class="vp-NavBar-rightArea"> 
-							<ul class="ms-NavBar-items vp-NavBar-items">  
-								<li class="ms-NavBar-item vp-NavBar-item vp-NavBar-command"> 
-									<button tabindex="3" class="vp-NavBar-button vp-NavBar-button--share o365button" type="button">
-										<div class="vp-NavBar-buttonInner">
-											<i class="vp-NavBar-icon ms-Icon--mail"></i>
-											<span class="vp-NavBar-commandText ms-font-m ms-font-weight-regular ms-u-hiddenMdDown">Share</span>
-										</div>
-									</button> 
-								</li> 
-								<li class="ms-NavBar-item vp-NavBar-item vp-NavBar-command">
-									<button tabindex="4" class="vp-NavBar-button vp-NavBar-button--delete o365button" style="display: none;" type="button"></button> 
-								</li> 
-							</ul> 
-						</div> 
+
+							</div>
+							<div id="channelsTitle" class="vp-topNav-margin">
+										<div id="channelsDiv">
+											<a id="channelsDiv-button" href="#/channels" class="ms-nav-button is-selected">
+												 Channels
+											</a>
+										</div>									
+							</div>
+							<div id="channelButton" class="vp-topNav-margin vp-u-floatRight" style="display: inline-block;">
+								<a href="#" onclick="goToAddChannelPage()" class="ms-nav-button ms-nav-button--borderless">
+									<i class="ms-Icon ms-Icon--plus"></i>
+									New Channel
+								</a>
+							</div>
+							<div id="uploadButton" class="vp-topNav-margin vp-u-floatRight" style="display: none;">
+								<a href="#" onclick="goToUploadPage()" class="ms-nav-button ms-nav-button--borderless">
+									<i class="ms-Icon ms-Icon--upload"></i>
+									Upload videos
+								</a>
+							</div>
+						</div>
 					</div>
-				</div> 
+				</div>
+
+
 
 
 
