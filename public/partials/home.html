@@ -39,13 +39,13 @@
 
 			<div class="vp-tile-block vp-thumbContainer vp-tile-width vp-tile-height" ng-repeat="video in popularVideos">
 	            <div class="vp-thumbImageContainer ms-bg-color-neutralLighterAlt vp-tile-width vp-tile-height">
-	                <a href="#/channels/{{channel.Id}}/videos/{{video.ID}}"> 
+	                <a href="#/channels/{{video.ChannelID}}/videos/{{video.ID}}"> 
 	                    <img class="vp-thumbImage vp-tile-width vp-tile-height" alt="{{video.Title}}" src="{{video.ThumbnailUrl}}&amp;width=220&amp;height=124"> 
 	                </a>
 	            </div> 
 	            <div class="vp-thumbDataOverlay vp-tile-width"></div>
 	            <div class="vp-thumbDataContainer vp-tile-width">
-	                <a title="{{video.Title}}" class="vp-largePictureLine1Link" href="#/channels/{{channel.Id}}/videos/{{video.ID}}"> 
+	                <a title="{{video.Title}}" class="vp-largePictureLine1Link" href="#/channels/{{video.ChannelID}}/videos/{{video.ID}}"> 
 	                    <div class="vp-largePictureLine1 ms-noWrap vp-smallThumb-title">{{video.Title}}</div>
 	                </a>
 	                <div class="vp-largePictureLine2">{{video.VideoDurationInSeconds * 1000 | date:"mm:ss" }} <span class="vp-description-separator ms-border-color-neutralTertiaryAlt"></span>{{video.ViewCount}} views 

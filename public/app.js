@@ -17,8 +17,13 @@ var videoPortalApp = angular.module("videoPortalApp", ['ngRoute', 'AdalAngular']
 		factory.getChannel = function (channelId) {
 			$http.defaults.useXDomain = true;
 			delete $http.defaults.headers.common['X-Requested-With'];
-			return $http.get(baseUrl + 'channels(guid\'' + channelId + '\')?$expand=Videos');
+			return $http.get(baseUrl + 'channels(guid\'' + channelId + '\')?$expand=Videos,SpotlightVideos/Video');
 		};
+		factory.getPopularChannelVideos = function (channelId) {
+			$http.defaults.useXDomain = true;
+			delete $http.defaults.headers.common['X-Requested-With'];
+			return $http.get(baseUrl + 'channels(guid\'' + channelId + '\')/search/popular');			
+		}
 		factory.getChannelVideos = function (channelId) {
 			$http.defaults.useXDomain = true;
 			delete $http.defaults.headers.common['X-Requested-With'];
@@ -43,12 +48,17 @@ var videoPortalApp = angular.module("videoPortalApp", ['ngRoute', 'AdalAngular']
 			$http.defaults.useXDomain = true;
 			delete $http.defaults.headers.common['X-Requested-With'];
 			return $http.get(baseUrl + 'channels(guid\'' + channelId + '\')/videos(guid\'' + videoId + '\')/getStreamingKeyAccessToken');						
-		}
-		factory.getChannels = function() {
+		};
+		factory.getChannelsAndVideos = function() {
 			$http.defaults.useXDomain = true;
 			delete $http.defaults.headers.common['X-Requested-With'];
 			return $http.get(baseUrl + 'channels?$top=3&$expand=Videos');
-    	};
+		};
+		factory.getChannels = function() {
+			$http.defaults.useXDomain = true;
+			delete $http.defaults.headers.common['X-Requested-With'];
+			return $http.get(baseUrl + 'channels?$top=20');
+		};
 
 		return factory;
 	}]);
@@ -108,11 +118,24 @@ videoPortalApp.controller("HomeController", function($scope, videosFactory) {
 });
 
 videoPortalApp.controller("ChannelsController", function($scope, videosFactory) {
-	$scope.channels = videosFactory.getChannels();
+	videosFactory.getChannels().success(function (results) {
+		$scope.channels = results.value;
+		console.log("Channels returned: " + $scope.channels.length);
+	});
 });
 
 videoPortalApp.controller("ChannelController", function($scope, $routeParams, videosFactory) {
-	$scope.channelVideos = videosFactory.getChannelVideos($routeParams.channelId);
+	videosFactory.getChannel($routeParams.channelId).success(function (results) {
+		results.VideoCount = results.Videos.length;
+		if (results.SpotlightVideos.length > 5) {
+			results.SpotlightVideos.splice(5, results.SpotlightVideos.length - 5);	
+		}
+		$scope.channel = results;
+	});
+	videosFactory.getPopularChannelVideos($routeParams.channelId).success(function (results) {
+		$scope.popularChannelVideos = results.value;
+	})
+	$scope.selectedView = 1;
 });
 
 videoPortalApp.controller("VideoController", function($scope, $routeParams, $sce, videosFactory) {
