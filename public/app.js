@@ -104,19 +104,37 @@ videoPortalApp.config(['$routeProvider', '$httpProvider', 'adalAuthenticationSer
 
 }]);
 
-videoPortalApp.controller("HomeController", function($scope, videosFactory) {
+videoPortalApp.controller("HomeController", function($scope, $q, videosFactory) {
+	var requests = {
+		featuredVideos: videosFactory.getFeaturedVideos(),
+		popularVideos: videosFactory.getPopularVideos(),
+		channels: videosFactory.getChannelsAndVideos()
+	};
+
+	$q.all(requests).then(function (responses) {
+		console.log("Requests completed");
+		$scope.featuredVideos = responses.featuredVideos.data.value;
+		$scope.popularVideos = responses.popularVideos.data.value;
+		$scope.channels = responses.channels.data.value;
+		//$scope.$apply();
+	});
+	/*
 	videosFactory.getFeaturedVideos().success(function (results) {
 		$scope.featuredVideos = results.value;
 		console.log("Featured videos returned: " + $scope.featuredVideos.length);
+		$scope.$apply();
 	});
 	videosFactory.getPopularVideos().success(function (results) {
 		$scope.popularVideos = results.value;
 		console.log("Popular videos returned: " + $scope.popularVideos.length);
+		$scope.$apply();
 	});
 	videosFactory.getChannelsAndVideos().success(function (results) { 
 		$scope.channels = results.value; 
 		console.log("Channels returned: " + $scope.channels.length);
+		$scope.$apply();
 	});
+*/
 });
 
 videoPortalApp.controller("ChannelsController", function($scope, videosFactory) {
@@ -152,6 +170,7 @@ videoPortalApp.controller("VideoController", function($scope, $routeParams, $sce
 		$scope.accessToken = results.value;
 		if ($scope.playbackUrl) {
 			constructEmbedUrl();
+			
 		}
 	});
 	videosFactory.getPlaybackUrl($routeParams.channelId, $routeParams.videoId).success(function (results) {
@@ -159,20 +178,24 @@ videoPortalApp.controller("VideoController", function($scope, $routeParams, $sce
 		$scope.playbackUrl = results.value;
 		if ($scope.accessToken) {
 			constructEmbedUrl();
+			
 		}
 	});
 	videosFactory.getChannel($routeParams.channelId).success(function (results) {
 		console.log("Channel returned");
 		results.VideoCount = results.Videos.length;
 		$scope.channel = results;
+		
 	});
 	videosFactory.getVideo($routeParams.channelId, $routeParams.videoId).success(function (results) { 
 		$scope.video = results; 
 		console.log("Video returned");
+		
 	});
 	videosFactory.getRelatedVideos($routeParams.channelId).success(function (results) {
 		$scope.relatedVideos = results.value; 
 		console.log("Related Videos returned");
+		
 	});
 
 });
