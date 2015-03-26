@@ -1,0 +1,18 @@
+<div class="vp-tile-block vp-thumbContainer {{ spotlight == 'true' ? 'vp-tile-width-x2 vp-tile-height-x2' : 'vp-tile-width vp-tile-height' }}">
+    <div class="vp-thumbImageContainer ms-bg-color-neutralLighterAlt {{ spotlight == 'true' ? 'vp-tile-width-x2 vp-tile-height-x2' : 'vp-tile-width vp-tile-height' }}">
+        <a href="#/channels/{{channelid}}/videos/{{videoid}}"> 
+            <img class="vp-thumbImage {{ spotlight == 'true' ? 'vp-tile-width-x2 vp-tile-height-x2' : 'vp-tile-width vp-tile-height' }}" alt="{{title}}" src="{{thumbnailurl}}{{ spotlight == 'true' ? '&amp;width=458&amp;height=266' : '&amp;width=220&amp;height=124' }}"> 
+        </a>
+    </div> 
+    <div class="vp-thumbDataOverlay {{ spotlight == 'true' ? 'vp-tile-width-x2' : 'vp-tile-width' }}"></div>
+    <div class="vp-thumbDataContainer {{ spotlight == 'true' ? 'vp-tile-width-x2' : 'vp-tile-width' }}">
+        <a title="{{title}}" class="vp-largePictureLine1Link" href="#/channels/{{channelid}}/videos/{{videoid}}"> 
+            <div class="vp-largePictureLine1 ms-noWrap {{ spotlight == 'true' ? 'vp-largeThumb-title' : 'vp-smallThumb-title' }} ">{{title}}</div>
+        </a>
+        <div class="vp-largePictureLine2">{{duration}} <span class="vp-description-separator ms-border-color-neutralTertiaryAlt"></span>{{viewcount}} views 
+            <a title="View Video" class="vp-u-floatRight">
+                <i class="ms-Icon ms-Icon--ellipsis"></i>
+            </a>
+        </div> 
+    </div>
+</div>

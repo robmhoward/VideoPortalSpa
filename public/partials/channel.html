@@ -3,85 +3,37 @@
 	<div class="vp-header-featured ms-bg-color-neutralPrimary">
 		<div class="vp-site-defaultWidth">
 
-			<div id="ctl00_PlaceHolderMain_spotlightTitleTile" class="vp-tile-group">
+			<div class="vp-tile-group">
 	            <div class="vp-channelBox vp-tile-block vp-tile-defaultHeight vp-tile-width" style="background-color: {{channel.TileHtmlColor}}">
 	                <div class="ms-font-xxl ms-font-color-white vp-groupTitle-text">{{channel.Title}}</div>
 	                <div class="ms-font-l ms-font-color-white vp-groupTitle-text">{{channel.VideoCount == 1 ? '1 Video' : channel.VideoCount + ' Videos'}}</div>
 	            </div>
         	</div>
 
-			<div class="vp-tile-block vp-thumbContainer {{$index != 0 ? 'vp-tile-width vp-tile-height' : 'vp-tile-width-x2 vp-tile-height-x2'}}" ng-repeat="video in channel.SpotlightVideos">
-                <div class="vp-thumbImageContainer ms-bg-color-neutralLighterAlt {{$index != 0 ? 'vp-tile-width vp-tile-height' : 'vp-tile-width-x2 vp-tile-height-x2'}}">
-                    <a href="#/channels/{{video.Video.ChannelID}}/videos/{{video.Video.ID}}"> 
-                        <img class="vp-thumbImage {{$index != 0 ? 'vp-tile-width vp-tile-height' : 'vp-tile-width-x2 vp-tile-height-x2'}}" alt="{{video.Video.Title}}" src="{{video.Video.ThumbnailUrl}}&amp;width=458&amp;height=266"> 
-                    </a>
-                </div> 
-                <div class="vp-thumbDataOverlay {{$index != 0 ? 'vp-tile-width' : 'vp-tile-width-x2'}}"></div>
-                <div class="vp-thumbDataContainer {{$index != 0 ? 'vp-tile-width' : 'vp-tile-width-x2'}}">
-                    <a title="{{video.title}}" class="vp-largePictureLine1Link" href="#/channels/{{video.Video.ChannelID}}/videos/{{video.Video.ID}}"> 
-                        <div class="vp-largePictureLine1 ms-noWrap vp-largeThumb-title">{{video.Video.Title}}</div>
-                    </a>
-                    <div class="vp-largePictureLine2">{{video.Video.VideoDurationInSeconds * 1000 | date:"mm:ss" }} <span class="vp-description-separator ms-border-color-neutralTertiaryAlt"></span>{{video.Video.ViewCount}} views 
-                        <a title="View Video" class="vp-u-floatRight js-callout-launchPoint" id="ctl00_PlaceHolderMain_videoSpotlightControl0_callout" aria-expanded="false" aria-controls="coctl00_PlaceHolderMain_videoSpotlightControl0_callout_callout" onclick="openVideoCallout(this);" href="#" ms-jsgrid-click-passthrough="true">
-                            <i class="ms-Icon ms-Icon--ellipsis"></i>
-                        </a>
-                    </div> 
-                </div>
-			</div>
+        	<video-tile ng-repeat="video in channel.SpotlightVideos" title="{{video.Video.Title}}" duration="{{video.Video.VideoDurationInSeconds * 1000 | date:'mm:ss' }}" viewcount="{{video.Video.ViewCount}}" channelid="{{video.Video.ChannelID}}" videoid="{{video.Video.ID}}" thumbnailurl="{{video.Video.ThumbnailUrl}}" spotlight="{{$index == 0}}"/>
+
 		</div>
 	</div>
 
 	<div class="vp-site-defaultWidth">
 
 		<div class="inlineBlockDisplay vp-u-spacer">
-			<a id="ctl00_PlaceHolderMain_videoPopularLink" class="ms-Pivot-link {{ selectedView == 1 ? 'is-selected' : ''}}" ng-click="selectedView=1">Popular</a>
-			<a id="ctl00_PlaceHolderMain_videoNewestLink" class="ms-Pivot-link {{ selectedView == 2 ? 'is-selected' : ''}}" ng-click="selectedView=2">All Videos</a>
-			<a id="ctl00_PlaceHolderMain_myVideosLink" class="ms-Pivot-link {{ selectedView == 3 ? 'is-selected' : ''}}" ng-click="selectedView=3">My Videos</a>
+			<a class="ms-Pivot-link {{ selectedView == 1 ? 'is-selected' : ''}}" ng-click="selectedView=1">Popular</a>
+			<a class="ms-Pivot-link {{ selectedView == 2 ? 'is-selected' : ''}}" ng-click="selectedView=2">All Videos</a>
+			<a class="ms-Pivot-link {{ selectedView == 3 ? 'is-selected' : ''}}" ng-click="selectedView=3">My Videos</a>
 		</div>
 
-		<div id="ctl00_PlaceHolderMain_videosViewSection" class="vp-group-width-fiveTile">
+		<div class="vp-group-width-fiveTile">
 			<div class="vp-thumbnail-section" ng-if="selectedView == 1">
 
-		        <div class="vp-tile-block vp-thumbContainer vp-tile-width vp-tile-height" ng-repeat="video in popularChannelVideos">
-		            <div class="vp-thumbImageContainer ms-bg-color-neutralLighterAlt vp-tile-width vp-tile-height">
-		                <a href="#/channels/{{channel.Id}}/videos/{{video.ID}}"> 
-		                    <img class="vp-thumbImage vp-tile-width vp-tile-height" alt="{{video.Title}}" src="{{video.ThumbnailUrl}}&amp;width=220&amp;height=124"> 
-		                </a>
-		            </div> 
-		            <div class="vp-thumbDataOverlay vp-tile-width"></div>
-		            <div class="vp-thumbDataContainer vp-tile-width">
-		                <a title="{{video.Title}}" class="vp-largePictureLine1Link" href="#/channels/{{channel.Id}}/videos/{{video.ID}}"> 
-		                    <div class="vp-largePictureLine1 ms-noWrap vp-smallThumb-title">{{video.Title}}</div>
-		                </a>
-		                <div class="vp-largePictureLine2">{{video.VideoDurationInSeconds * 1000 | date:"mm:ss" }} <span class="vp-description-separator ms-border-color-neutralTertiaryAlt"></span>{{video.ViewCount}} views 
-		                    <a title="View Video" class="vp-u-floatRight" id="ctl00_PlaceHolderMain_ctl100_callout" onclick="openVideoCallout(this);" href="#" ms-jsgrid-click-passthrough="true">
-		                        <i class="ms-Icon ms-Icon--ellipsis"></i>
-		                    </a>
-		                </div> 
-		            </div>
-		        </div>
+				<video-tile ng-repeat="video in popularChannelVideos" title="{{video.Title}}" duration="{{video.VideoDurationInSeconds * 1000 | date:'mm:ss' }}" viewcount="{{video.ViewCount}}" channelid="{{channel.Id}}" videoid="{{video.ID}}" thumbnailurl="{{video.ThumbnailUrl}}" />
+
 			</div>
 
 			<div class="vp-thumbnail-section" ng-if="selectedView == 2">
 
-		        <div class="vp-tile-block vp-thumbContainer vp-tile-width vp-tile-height" ng-repeat="video in channel.Videos">
-		            <div class="vp-thumbImageContainer ms-bg-color-neutralLighterAlt vp-tile-width vp-tile-height">
-		                <a href="#/channels/{{channel.Id}}/videos/{{video.ID}}"> 
-		                    <img class="vp-thumbImage vp-tile-width vp-tile-height" alt="{{video.Title}}" src="{{video.ThumbnailUrl}}&amp;width=220&amp;height=124"> 
-		                </a>
-		            </div> 
-		            <div class="vp-thumbDataOverlay vp-tile-width"></div>
-		            <div class="vp-thumbDataContainer vp-tile-width">
-		                <a title="{{video.Title}}" class="vp-largePictureLine1Link" href="#/channels/{{channel.Id}}/videos/{{video.ID}}"> 
-		                    <div class="vp-largePictureLine1 ms-noWrap vp-smallThumb-title">{{video.Title}}</div>
-		                </a>
-		                <div class="vp-largePictureLine2">{{video.VideoDurationInSeconds * 1000 | date:"mm:ss" }} <span class="vp-description-separator ms-border-color-neutralTertiaryAlt"></span>{{video.ViewCount}} views 
-		                    <a title="View Video" class="vp-u-floatRight" id="ctl00_PlaceHolderMain_ctl100_callout" onclick="openVideoCallout(this);" href="#" ms-jsgrid-click-passthrough="true">
-		                        <i class="ms-Icon ms-Icon--ellipsis"></i>
-		                    </a>
-		                </div> 
-		            </div>
-		        </div>
+				<video-tile ng-repeat="video in channel.Videos" title="{{video.Title}}" duration="{{video.VideoDurationInSeconds * 1000 | date:'mm:ss' }}" viewcount="{{video.ViewCount}}" channelid="{{channel.Id}}" videoid="{{video.ID}}" thumbnailurl="{{video.ThumbnailUrl}}" />
+
 			</div>
 
 			<div class="vp-thumbnail-section"  ng-if="selectedView == 3">

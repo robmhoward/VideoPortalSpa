@@ -176,3 +176,20 @@ videoPortalApp.controller("VideoController", function($scope, $routeParams, $sce
 	});
 
 });
+
+videoPortalApp.directive("videoTile", function () {
+	return {
+		restrict: "E",
+		scope: {
+			spotlight: "@",
+			title:"@",
+			duration: "@",
+			viewcount: "@",
+			channelid: "@",
+			videoid: "@",
+			thumbnailurl: "@"
+
+		},
+		templateUrl: 'partials/videoTile.html'
+	}
+});

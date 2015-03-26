@@ -99,17 +99,15 @@ body, .ms-core-defaultFont, #pageStatusBar, .ms-status-msg, .js-callout-body {
     bottom: 0px;
 }
 
-<<<<<<< HEAD
 .vp-header-featured .vp-tile-height-x2 .vp-thumbDataOverlay, .vp-header-featured .vp-tile-height-x2 .vp-thumbDataContainer, .vp-header-featured .vp-tile-height .vp-thumbDataOverlay, .vp-header-featured .vp-tile-height .vp-thumbDataContainer {
     padding: 4px 10px 0px 10px;
-=======
+}
 
 .vp-description-separator {
     height: 8px;
     border-right: 1px solid;
     margin: 0 5px 0 3px;
     display: inline-block;
->>>>>>> origin/master
 }
 
 
