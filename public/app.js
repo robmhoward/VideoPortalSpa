@@ -76,17 +76,20 @@ videoPortalApp.config(['$routeProvider', '$httpProvider', 'adalAuthenticationSer
 		.when('/channels',
 			{
 				controller: 'ChannelsController',
-				templateUrl: 'partials/channels.html'
+				templateUrl: 'partials/channels.html',
+				requireADLogin: true
 			})
 		.when('/channels/:channelId',
 			{
 				controller: 'ChannelController',
-				templateUrl: 'partials/channel.html'
+				templateUrl: 'partials/channel.html',
+				requireADLogin: true
 			})
 		.when('/channels/:channelId/videos/:videoId',
 			{
 				controller: 'VideoController',
-				templateUrl: 'partials/video.html'
+				templateUrl: 'partials/video.html',
+				requireADLogin: true
 			})
 		.otherwise({redirectTo: '/' });
 
