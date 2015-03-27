@@ -44,7 +44,7 @@ var videoPortalApp = angular.module("videoPortalApp", ['ngRoute', 'AdalAngular']
 		factory.getPlaybackUrl = function(channelId, videoId) {
 			$http.defaults.useXDomain = true;
 			delete $http.defaults.headers.common['X-Requested-With'];
-			return $http.get(baseUrl + 'channels(guid\'' + channelId + '\')/videos(guid\'' + videoId + '\')/getPlaybackUrl');
+			return $http.get(baseUrl + 'channels(guid\'' + channelId + '\')/videos(guid\'' + videoId + '\')/getPlaybackUrl(1)');
 		};
 		factory.getStreamingToken = function(channelId, videoId) {
 			$http.defaults.useXDomain = true;
@@ -90,17 +90,16 @@ videoPortalApp.config(['$routeProvider', '$httpProvider', 'adalAuthenticationSer
 			})
 		.otherwise({redirectTo: '/' });
 
-	adalProvider.init(
-		{ 
-			tenant: 'junction.onmicrosoft.com', 
+	var adalConfig = {
+			tenant: 'common', 
 			clientId: '5e188fc6-f4ac-40cb-9373-a75d7efa4e1c', 
-			extraQueryParameter: 'nux=1', 
-			endpoints: {
-				"https://junction.sharepoint.com/portals/hub/_api/": "https://" + tenantName
-			}
+			extraQueryParameter: 'nux=1',
+			endpoints: {}
 			//cacheLocation: 'localStorage', // enable this for IE, as sessionStorage does not work for localhost. 
-		}, 
-		$httpProvider); 
+	};
+	adalConfig.endpoints["https://" + tenantName + "/portals/hub/_api/"] = "https://" + tenantName;
+
+	adalProvider.init(adalConfig, $httpProvider); 
 
 }]);
 
