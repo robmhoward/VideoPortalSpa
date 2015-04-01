@@ -2,7 +2,7 @@
   "name": "VideoPortalSpa",
   "version": "0.0.0",
   "description": "SPA prototype for Video Portal UX",
-  "main": "index.js",
+  "main": "server.js",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1"
   },
@@ -14,6 +14,10 @@
   "license": "ISC",
   "bugs": {
     "url": "https://github.com/robmhoward/VideoPortalSpa/issues"
+  },
+  "dependencies": {
+    "express": "4.12.*",
+    "angular": "1.3.*"
   },
   "homepage": "https://github.com/robmhoward/VideoPortalSpa"
 }
