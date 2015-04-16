@@ -1668,13 +1668,6 @@ body, .ms-core-defaultFont, #pageStatusBar, .ms-status-msg, .js-callout-body {
     filter: progid:DXImageTransform.Microsoft.Shadow(color=#FF0000,strength=3);
 }
 
-.vp-tile-height .vp-largePictureLine1 {
-    color: #333;
-    font-family: "wf_segoe-ui_normal","Segoe UI","Segoe WP",Tahoma,Arial,sans-serif;
-    font-size: 14px;
-    font-weight: normal;
-}
-
 .vp-header-featured {
     display: inline-block;
     margin-bottom: 46px;
