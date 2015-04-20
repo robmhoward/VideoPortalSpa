@@ -59,7 +59,7 @@ var videoPortalApp = angular.module("videoPortalApp", ['ngRoute', 'AdalAngular']
 		factory.getChannels = function() {
 			$http.defaults.useXDomain = true;
 			delete $http.defaults.headers.common['X-Requested-With'];
-			return $http.get(baseUrl + 'channels?$top=20');
+			return $http.get(baseUrl + 'channels?$top=10');
 		};
 
 		return factory;
